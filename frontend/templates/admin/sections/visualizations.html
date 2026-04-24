@@ -1,0 +1,37 @@
+{% load plotly_dash %}
+<!-- Body Section -->
+     <div class="grid grid-cols-12">
+        <div class="col-span-2 h-96 bg-white px-5 pt-5 text-base">
+            <ul class="space-y-4 text-link-color">
+                <a class="block" href=""><li>Dashboard
+                    <ul class="pl-5 space-y-2">
+                        <a class="block mt-2" href=""><li>KPIs and Charts</li></a>
+                        <a class="block" href=""><li>Alerts</li></a>
+                    </ul>
+                </li></a>
+                <a class="block" href=""><li>Transaction Details
+                    <ul class="pl-5 space-y-2">
+                        <a class="block mt-2" href=""><li class="mt-2">Transaction Info</li></a>
+                        <a class="block" href=""><li>Risk and Analysis Section</li></a>
+                    </ul>
+                </li></a>
+                <a class="block" href=""><li>Behaviour Analysis
+                    <ul class="pl-5 space-y-2">
+                        <a class="block mt-2" href=""><li class="mt-2">Summary and Visualizations</li></a>
+                        <a class="block" href=""><li>Session Data Metrics</li></a>
+                        <a class="block" href=""><li>Activity Log</li></a>
+                        <a class="block" href=""><li>Model Insights</li></a>
+                    </ul>
+                </li></a>
+            </ul>
+        </div>
+        <div class="col-span-10 h-full">
+            <div class="w-full h-20 bg-white flex items-center pl-10">
+                <h1 class="font-sans font-medium text-header-color text-3xl font-stretch-condensed">Dashboard</h1>
+            </div>
+            
+            <div>
+                {% plotly_direct name="Dashboard" %}
+            </div>
+        </div>
+     </div>

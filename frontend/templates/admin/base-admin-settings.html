@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tailwindcss/dist/output.css' %}">
+    <title>Settings</title>
+</head>
+<body>
+    <div class="grid grid-cols-12">
+        <nav class="col-span-2 bg-site-second-background-color border-r-2 border-site-border-color 
+                    h-screen">
+            <div class="w-full px-5 py-4 border-b-2 border-site-border-color">
+                <h1 class="text-site-dashboard-first-gray-color text-lg font-medium">Settings</h1>
+            </div>
+            <ul class="w-full">
+                <a href="{% url 'system_admin:admin_profile' %}" class="block group hover:bg-site-link-hover-color px-5 py-2"><li class="group-hover:text-white text-base font-medium text-site-dashboard-first-gray-color">Profile</li></a>
+                <a href="{% url 'system_admin:admin_security' %}" class="block group hover:bg-site-link-hover-color px-5 py-2"><li class="group-hover:text-white text-base font-medium text-site-dashboard-first-gray-color">Security</li></a>
+            </ul>
+        </nav>
+        <main class="col-span-10 h-screen">
+            
+            {% block content %}
+
+            {% endblock content %}
+        </main>
+    </div>
+    <div id="mfa-meta" data-status="{{ user.profile.mfa_enabled|yesno:'true,false' }}"></div>
+
+    <script src="{% static 'scripts/js/site-script.js' %}"></script>
+    <script type="module" src="{% static 'scripts/js/toggle-mfa-status.js' %}"></script>
+    <script type="module" src="{% static 'scripts/js/get-configuration-status.js' %}"></script>
+</body>
+</html>

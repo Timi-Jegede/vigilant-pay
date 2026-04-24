@@ -1,0 +1,12 @@
+<!-- kpis and charts -->
+{% extends '../sections/base.html'%}
+
+{% load plotly_dash %}
+
+{% block content %}
+    {% plotly_header %}
+        
+        {% plotly_direct name="Kpis_Charts" %}
+    
+    {% plotly_footer %}
+{% endblock %}

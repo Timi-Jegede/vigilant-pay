@@ -1,0 +1,20 @@
+<!-- Templates index.html -->
+{% extends '../base-admin.html' %}
+
+    {% block sidenav_firsturl %}{% url 'system_admin:admin_index' %}{% endblock sidenav_firsturl %}
+
+    {% block sidenav_secondurl %}{% url 'system_admin:admin_dashboard' %}{% endblock sidenav_secondurl %}
+
+    {% block firsturl %} Transactions {% endblock firsturl %}
+
+    {% block secondurl %} Dashboard {% endblock secondurl %}
+
+    {% load plotly_dash %}
+
+    {% block content %}
+        {% plotly_header %}
+
+            {% plotly_direct name="Kpis_Charts" %}
+
+        {% plotly_footer %}
+    {% endblock %}

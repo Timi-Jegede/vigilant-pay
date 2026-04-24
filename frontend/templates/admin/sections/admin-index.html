@@ -1,0 +1,70 @@
+<!-- Extends base-admin.html -->
+ {% extends '../base-admin.html' %}
+
+    {% block sidenav_firsturl %}{% url 'system_admin:admin_index' %}{% endblock sidenav_firsturl %}
+
+    {% block sidenav_secondurl %}{% url 'system_admin:admin_dashboard' %}{% endblock sidenav_secondurl %}
+
+    {% block firsturl %} Transactions {% endblock firsturl %}
+
+    {% block secondurl %} Dashboard {% endblock secondurl %}
+
+    {% block content %}
+
+        <div class="grid grid-cols-1 col-span-1 bg-white mx-10 my-10 md:w-1/2 rounded-xs">
+            <div class="grid grid-rows-1 gap-4 text-base">
+                <div class="row-span-1">
+                    <div class="bg-site-primary-color text-white font-medium px-4 py-2">
+                        Suspicious Transaction Alert
+                    </div>
+                    <div class="px-2">
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Amount: </span>
+                            <span class="font-medium">$5,800.00</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Location: </span>
+                            <span class="font-medium">Moscow, Russia</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Cardholder: </span>
+                            <span class="font-medium">Jane Smith</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Risk Level: </span>
+                            <span class="text-site-table-red font-medium">High</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Alert: </span>
+                            <span class="font-medium">IP Address Mismatch, Unusual Purchase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-span-1">
+                    <div class="bg-site-primary-color text-white font-medium px-4 py-2">Risk Assessment</div>
+                    <div class="px-2">
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Foreign Location</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>New Device Used</span>
+                        </div>
+                        <div class="px-2 py-1 border-b-2 border-site-border-color">
+                            <span>Rapid Multiple Transactions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-2">
+                <div class="px-2 py-2 border-b-2 border-site-border-color">
+                    <span>Recommeded Action: </span><span class="font-medium">Block Transaction</span>
+                </div>
+                <div class="flex px-2 space-x-2 py-2">
+                    <button class="bg-site-table-red px-2 flex-1 rounded-xs cursor-pointer">Block</button>
+                    <button class="bg-site-terminal-blue px-2 flex-1 rounded-xs cursor-pointer">Allow</button>
+                    <button class="bg-gray-300 px-2 flex-1 rounded-xs text-center cursor-pointer">Escalate for Review</button>
+                </div>
+            </div>
+        </div>
+
+    {% endblock content %}

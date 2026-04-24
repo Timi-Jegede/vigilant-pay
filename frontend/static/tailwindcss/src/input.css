@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@source "../../../templates/**/*.html";
+@source "../../../../**/*.py";
+@source "../../js/site-script.js";
+@source inline("col-span-10 col-span-11 translate-x-6 bg-site-toggle-active-color transition duration-300 w-5 h-5 font-normal text-base-red text-black");
+@theme {
+    --color-site-primary-color: #2D0369;
+    --color-site-lime-green: #D2FC96;
+    --color-site-primary-violet: #822CFF;  
+    --color-site-primary-violet-shaded: #6609ED;  
+    --color-site-background-color: #DFD8E8;
+    --color-site-second-background-color: rgba(223, 216, 232, 0.30);
+    --color-body-color: #E8E8E8;
+    --color-link-color: #1C3AFF;
+    --color-header-color-fade: #C59DFF;
+    --color-site-link-hover-color: #822CFF;
+    --color-site-border-color: #D0CED2;
+    --color-site-dashboard-first-gray-color: rgba(29, 29, 29, 0.72);
+    --color-site-dashboard-second-gray-color: rgba(29, 29, 29, 0.78);
+    --color-site-border-color: rgba(18, 4, 39, 0.08);
+    --color-site-form-border-color: rgba(18, 4, 39, 0.35);
+    --color-site-gain-color: #05CC58;
+    --color-site-loss-color: #F90A0A;
+    --color-site-toggle-active-color: #822CFF;
+    --color-site-toggle-inactive-color: rgba(130, 44, 255, 0.35);
+    --color-site-settings-icon-gray-color: rgba(29, 29, 29, 0.90);
+    --color-site-settings-icon-green-color: #06B14D;
+    --color-site-table-black: rgba(0, 0, 0, 0.90);
+    --color-site-table-green: #23FA9D;
+    --color-site-table-yellow: #FADA23;
+    --color-site-table-red: #FA4323;
+    --color-site-table-transparent-purple: rgba(130, 44, 255, 0.79);
+    --color-site-table-purple: rgba(130, 44, 255, 1);
+    --color-site-button-green: #B5FF4B;
+    --color-site-hover-button-green: #9DFF10;
+    --color-site-terminal-bg-purple: rgba(45, 3, 105, 0.30);
+    --color-site-terminal-blue: #118CFF;
+    --color-site-terminal-green: #06F29F;
+    --color-site-terminal-dark-green: #04D58C;
+    --color-mfa-grey: #EFEDED;
+    --color-mfa-blue: #118CFF;
+    --color-mfa-blue-shaded: #067CEA;
+
+
+    --spacing-sidebar-height: 37.0625rem;
+    --spacing-18: 4.5rem;
+    --spacing-sidebar-inner-top-margin: 2.75rem;
+    --spacing-user-dashboard-card-width: 31.8125rem;
+    --spacing-0.25: 0.0625rem;
+    --spacing-settings-first-section: 24.0375rem;
+    --spacing-settings-second-section: 14.775rem;
+    --spacing-profile-first-section: 8.0125rem;
+    --spacing-profile-second-section: 32.05rem;
+    --spacing-terminal-main-h: 35.5625rem; 
+    --spacing-terminal-main-w: 80.375rem;
+
+    --text-sm-inc: 0.8rem;
+    --text-base-red: 0.9rem;
+
+    --inset-shadow-custom: inset 0 3px 4px rgba(0, 0, 0, 0.5);
+
+    --font-sans: "Inter Variable", ui-sans-serif, system-ui;
+}

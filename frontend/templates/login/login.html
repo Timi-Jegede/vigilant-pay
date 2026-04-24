@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tailwindcss/dist/output.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="w-full h-screen bg-white">
+        <div class="flex flex-col items-center justify-center h-screen">
+            <div class="max-w-lg w-full h-96 px-4 space-y-3 bg-header-color-fade shadow-2xl">
+                <div class="py-2 mt-3">
+                    <h1 class="text-3xl font-medium text-header-color">Login</h1>
+                </div>
+                <form action="{% url 'login:login' %}" method="POST" class="space-x-2">
+                    {% csrf_token %}
+
+                    <div class="flex flex-col items-start space-y-1 flex-1">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="Username" class="w-full p-2 outline-none bg-white">
+                    </div>
+                    <div class="flex flex-col items-start space-y-1 flex-1">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Password" class="w-full p-2 outline-none bg-white">
+                    </div>
+                    <div>
+                        <button class="w-32 px-2 py-2 text-white bg-site-primary-violet hover:bg-site-primary-violet-shaded cursor-pointer text-base">Log in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tailwindcss/dist/output.css' %}">
+    <title>Multi-Factor Authentication</title>
+</head>
+<body>
+    <div class="bg-site-second-background-color h-dvh w-screen">
+        <div class="flex flex-col items-center justify-center h-dvh">
+            <div class="bg-white max-w-2xl h-96 w-full px-20 rounded-sm py-5">
+                <div class="py-3 border-b-2 border-site-border-color">
+                    <h1 class="text-3xl font-medium text-center">Multi-Factor Authentication</h1>
+                </div>
+                <div class="py-4 space-y-6 text-center text-base">
+                    <p>Please verify your identity to continue.</p>
+                    <strong>Enter the 6-digit code sent to your device.</strong>
+                </div>
+                <div class="flex items-center justify-center px-10">
+                    <form action="{% url 'mfa:verify_mfa' %}" method="POST" class="space-y-2">
+                        {% csrf_token %}
+
+                        <div class="flex flex-col items-center justify-center space-y-2">
+                            <label for="verifiation-code">Verification Code</label>
+                            <div class="flex items-center justify-center space-x-2">
+                                <input type="text" name="otp-code" class="border-2 border-site-border-color w-1/2 focus:ring-0
+                                                shadow-sm">
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center justify-center">
+                            <button class="bg-site-terminal-green text-white text-base w-52 rounded-sm
+                                        px-4 py-3 cursor-pointer font-medium hover:bg-site-terminal-dark-green">
+                                        Verify
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="flex items-center justify-between text-base text-site-primary-violet mt-4">
+                    <a href="" class="block cursor-pointer"><span>Resend Code</span></a>
+                    <a href="" class="block cursor-pointer"><span>Use a Backup Method</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- Users Index -->
+{% extends '../base.html' %}
+
+    {% load plotly_dash %}
+
+    {% block content %}
+
+        {% plotly_header %}
+
+            {% plotly_direct name="Transaction_Overview" %}
+        
+        {% plotly_footer %}
+    
+    {% endblock %}

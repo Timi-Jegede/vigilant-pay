@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tailwindcss/dist/output.css' %}">
+    <title>Backup Codes</title>
+</head>
+<body>
+    <main class="w-screen h-dvh flex flex-col items-center">
+        <div class="bg-mfa-grey mt-20 max-w-xl w-full px-10 py-10 space-y-2">
+            <div class="space-y-2">
+                <h1 class="text-2xl font-bold text-site-primary-color text-center">Backup Codes</h1>
+                <div class="text-base font-medium">
+                    <p>Your backup codes can only be viewed once.</p>
+                    <p>Ensure you keep them safe. </p>
+                    <p>If they are lost you would have to generate a new set of backup codes. </p>
+                </div>
+            </div>
+            <div class="md:grid md:grid-cols-2">
+                {% for backup_code in user_backup_codes %}
+                    <p>{{ forloop.counter }}. {{ backup_code }}</p>
+                {% endfor %}
+            </div>
+            <div class="mt-4 space-y-2 md:flex md:justify-center md:space-x-2">
+                {% url 'mfa:download_backup_codes' as download_backup_codes %}
+                <button onclick="downloadCodes();" type="button" class="h-10 flex 
+                        items-center justify-center bg-mfa-blue hover:bg-mfa-blue-shaded cursor-pointer text-white px-6 py-2 rounded-sm">Download as PDF</button>
+                {% url 'mfa:setup_uri' as setup_uri %}
+                <button onclick="window.location.href='{{ setup_uri }}'" type="button" class="h-10 flex 
+                        items-center justify-center bg-mfa-blue hover:bg-mfa-blue-shaded cursor-pointer text-white px-6 py-2 rounded-sm">Saved Codes</button>
+            </div>
+        </div>
+    </main>
+    <div id="code-data" data-codes="{{ user_backup_codes|join:',' }}" style="display:none;"></div>
+
+    <script src="{% static 'scripts/js/download-backup-codes.js' %}"></script>
+</body>
+</html>
