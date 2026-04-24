@@ -4,7 +4,7 @@
     increased the development speed, ease of test and deployment.
 
 [![Build Status](https://shields.io)](https://github.com)
-[![Python Version](https://shields.io)](https://python.org)
+[![Python Version](https://img.shields.io/bagde/LABEL-MESSAGE-COLOR?logo=python)](https://python.org)
 [![Django Version](https://shields.io)](https://djangoproject.com)
 
 ## 🚀 Highlights
