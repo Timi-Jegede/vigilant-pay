@@ -43,6 +43,7 @@
 The application will be live at `http://localhost:8000
 
 ## 🏗 Sytem Architecture
+```mermaid
 graph TD
     User((User/Client)) -->|HTTPS| Django[Django Monolith]
     
@@ -62,6 +63,7 @@ graph TD
     Worker -->|Notify| Alerts[Email/Slack API]
 
     style Django fill:#f9f,stroke:#333,stroke-width:2px
+```
 
 ## 📄 License
 Distributed under the MIT License. See `LICENSE` for more information.
