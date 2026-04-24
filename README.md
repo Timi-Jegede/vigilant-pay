@@ -5,7 +5,7 @@
 
 [![Build Status](https://shields.io)](https://github.com)
 [![Python Version](https://shields.io)](https://python.org)
-[![Django Version](https://shields.io)](https://www.djangoproject.com/)
+[![Django Version](https://shields.io)](https://djangoproject.com)
 
 ## 🚀 Highlights
 *   **Scalable Architecture**:  Monolithic architecture using Django Framework for server-side rendered
