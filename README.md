@@ -5,7 +5,7 @@
 
 [![Build Status](https://shields.io)](https://github.com)
 [![Python Version](https://img.shields.io/badge/LABEL-MESSAGE-COLOR?logo=python)](https://python.org)
-[![Django Version](https:///img.shields.io/badge/LABEL-MESSAGE-COLOR?logo=django)](https://djangoproject.com)
+[![Django Version](https://img.shields.io/badge/LABEL-MESSAGE-COLOR?logo=django)](https://djangoproject.com)
 
 ## 🚀 Highlights
 *   **Scalable Architecture**:  Monolithic architecture using Django Framework for server-side rendered
