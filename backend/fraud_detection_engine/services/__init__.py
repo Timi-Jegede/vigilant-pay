@@ -1,0 +1,1 @@
+from .fraud_detector_service import FraudDetectorService

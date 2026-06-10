@@ -21,12 +21,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', include('system_admin.urls', namespace='system_admin')),
-    path('', include('users.urls', namespace='users')),
-    path('django_plotly_dash/', include('django_plotly_dash.urls')),
-    path('terminal/',include('terminal.urls', namespace='terminal')),
-    path('mfa/', include('mfa.urls', namespace='mfa'), name='mfa'),
-    path('login/', include('login.urls', namespace='login')),
+    path('api-gateway/', include('api_gateway.urls', namespace='api_gateway')),
+    path('system-admin/', include('system_admin.urls', namespace='system_admin')),
+    path('b2b-portal/', include('b2b_portal.urls', namespace='b2b_portal'))
 ]
 
 if settings.DEBUG:

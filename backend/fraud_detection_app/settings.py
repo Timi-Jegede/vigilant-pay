@@ -19,9 +19,6 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key-12345')
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-MONGODB_URI = os.getenv('MONGODB_URI')
-MONGODB_NAME = os.getenv('MONGODB_NAME', 'fraud_detection')
-
 GMAIL_EMAIL = os.getenv('GMAIL_EMAIL')
 GMAIL_APP_PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
 
@@ -54,28 +51,25 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000'
 ]
 
-PLOTLY_DASH = {
-    'serve_locally': True,
-}
+TRUSTED_PROXY_IPS = ['127.0.0.1', '172.17.0.1']
+
+BACKLISTED_IPS = ['192.168.1.50', '203.0.113.5']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'login',
-    'mfa',
     'system_admin',
-    'terminal',
-    'dashboard',
-    'users.apps.UsersConfig',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'api_gateway',
+    'b2b_portal',
     'channels',
-    'fraud_detection',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fraud_detection_engine.apps.FraudDetectionEngineConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -84,11 +78,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'system_admin.middleware.MFARequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_plotly_dash.middleware.BaseMiddleware',
-    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
+    'fraud_detection_engine.middleware.FraudDataEnrichmentMiddleware',
+    'fraud_detection_engine.middleware.ClientPlatformAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'fraud_detection_app.urls'
@@ -135,6 +128,13 @@ DATABASES = {
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
     }
 }
 
@@ -201,3 +201,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_COOKIE_HTTPONLY = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+MAXMIND_CITY_DB_PATH = os.path.join(BASE_DIR, 'geo/GeoLite2-City.mmdb')
+MAXMIND_ASN_DB_PATH = os.path.join(BASE_DIR, 'geo/GeoLite2-ASN.mmdb')
+
+MAXMIND_DB_PATH = os.path.join(BASE_DIR, 'geo/GeoIP2-City.mmdb')
+MAXMIND_ANON_DB_PATH = os.path.join(BASE_DIR, 'geo/GeoIP2-Anonymous-IP.mmdb')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'production': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s:%(lineno)d - %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'production',
+        },
+    },
+    'loggers': {
+        'fraud_detection_engine': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': True
+        },
+    },
+}
