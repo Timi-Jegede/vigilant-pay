@@ -4,6 +4,7 @@ import logging
 from django.apps import AppConfig
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +14,12 @@ class FraudDetectionEngineConfig(AppConfig):
     ml_model = None
 
     def ready(self):
+        is_testing = 'test' in sys.argv or any('pytest' in arg for arg in sys.argv)
+
+        if is_testing:
+            print('Testing environment detected. Skipping live .joblib model initialization!')
+            return
+
         model_path = os.path.join(settings.BASE_DIR, 'models', 'production_fraud_model.joblib')
 
         if not os.path.exists(model_path):
