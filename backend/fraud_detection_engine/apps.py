@@ -14,7 +14,13 @@ class FraudDetectionEngineConfig(AppConfig):
     ml_model = None
 
     def ready(self):
-        is_testing = 'test' in sys.argv or any('pytest' in arg for arg in sys.argv)
+        is_testing = (
+            'test' in sys.argv or 
+            'migrate' in sys.argv or 
+            'makemigrations' in sys.argv or
+            any('pytest' in arg for arg in sys.argv) or
+            os.environ.get('SECRET_KEY') == 'ci-test-key'
+        )
 
         if is_testing:
             print('Testing environment detected. Skipping live .joblib model initialization!')
