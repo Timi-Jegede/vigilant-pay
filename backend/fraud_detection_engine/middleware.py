@@ -21,8 +21,6 @@ except Exception as e:
     logger.error(f'MaxMind ASN Database failed to load: {e}')
     ASN_READER = None
 
-    ANON_READER = None
-
 RESIDENTIAL_CLEAN = 0
 VPN_OR_PROXY = 1
 HOSTING_DATACENTER = 2
@@ -150,35 +148,7 @@ class FraudDataEnrichmentMiddleware:
                     'country_code': 'XX'
                 })
 
-        if not settings.DEBUG and ANON_READER:
-            try:
-                anon_res = ANON_READER.anonymous_ip(ip)
-                if anon_res.is_public_proxy or anon_res.is_anonymous_vpn or anon_res.is_tor_exit_node:
-                    request.ip_intelligence.update(
-                        {
-                            'f9_isp_classification': VPN_OR_PROXY
-                        }
-                    )                
-                elif anon_res.is_hosting_provider:
-                    request.ip_intelligence.update(
-                        {
-                            'f9_isp_classification': HOSTING_DATACENTER
-                        }
-                    )
-                else:
-                    request.ip_intelligence.update(
-                        {
-                            'f9_isp_classification': RESIDENTIAL_CLEAN
-                        }
-                    )
-            except Exception:
-                request.ip_intelligence.update(
-                    {
-                        'f9_isp_classification': UNKNOWN_UNCLASSIFIED
-                    }
-                )
-
-        elif settings.DEBUG and ASN_READER:
+        if ASN_READER:
             try:
                 asn_res = ASN_READER.asn(ip)
                 asn_number = asn_res.autonomous_system_number

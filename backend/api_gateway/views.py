@@ -19,7 +19,7 @@ class EvaluateTransactionView(APIView):
 
         ip_intelligence = getattr(native_req, 'ip_intelligence', {})
         current_lat = ip_intelligence.get('latitude', 0.0)
-        current_lon = ip_intelligence.get('longtitude', 0.0)
+        current_lon = ip_intelligence.get('longitude', 0.0)
         f9_isp_classification = ip_intelligence.get('f9_isp_classification')
 
         serializer = TransactionSerializer(data=payload)
