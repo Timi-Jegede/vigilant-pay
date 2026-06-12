@@ -9,8 +9,21 @@ import logging
 import pandas as pd
 from typing import Dict, Any
 from django.apps import apps
+import sys
 
-X_train, X_test, y_train, y_test = get_processed_data('raw_transactions.csv')
+is_testing = (
+    'test' in sys.argv or 
+    'migrate' in sys.argv or 
+    'makemigrations' in sys.argv or
+    any('pytest' in arg for arg in sys.argv) or
+    os.environ.get('SECRET_KEY') == 'ci-test-key'
+)
+
+if is_testing:
+    X_train, X_test, y_train, y_test = None, None, None, None
+    print('Testing enviroment detected. Skipping raw CSV data file extraction!')
+else:
+    X_train, X_test, y_train, y_test = get_processed_data('raw_transactions.csv')
 
 logger = logging.getLogger(__name__)
 
