@@ -46,24 +46,41 @@ The application will be live at `http://localhost:8000
 ## 🏗 Sytem Architecture
 ```mermaid
 graph TD
-    User((User/Client)) -->|HTTPS| Django[Django Monolith]
+    %% Define System Actors and Entry
+    Client[🏦 Fintech Client App] -->|1. POST Request + JSON Payload| Gateway[🌐 API Gateway App]
     
-    subgraph Django [Django Application Container]
-        Templates[Django Templates / UI]
-        Views[Views & Middleware]
-        Logic[Fraud Detection Logic]
-        
-        Views -->|Internal Call| Logic
+    %% Middleware Processing Layers
+    subgraph Django Middleware Pipeline
+        Gateway -->|2. Authenticate Token| Auth[🔒 Client Auth Middleware]
+        Auth -->|3. Enrich GeoData / IP Lookup| Geo[🌍 Geo Data Enrichment]
     end
 
-    Logic -->|Sync| DB[(PostgreSQL)]
-    Logic -->|Sync| ML[ML Inference Engine]
-    
-    Logic -->|Async Task| Queue[Redis / Celery]
-    Queue -->|Process| Worker[Background Worker]
-    Worker -->|Notify| Alerts[Email/Slack API]
+    %% Internal Processing Logic
+    subgraph Fraud Detection Engine Core
+        Geo -->|4. Pass Formatted Payload| View[📄 EvaluateTransactionView]
+        View -->|5. Clean & Validate Data| Serializer[📋 TransactionSerializer]
+        Serializer -->|6. Validated Fields| FeatureService[⚙️ MLFeatureService]
+        FeatureService -->|7. Extracted Vectors| Model[🧠 PredictMLModel XGBoost]
+    end
 
-    style Django fill:#f9f,stroke:#333,stroke-width:2px
+    %% Testing Isolation Framework (The Mocks)
+    subgraph GitHub Actions / Pytest Mock Layer
+        M_Auth[🚫 Bypassed in CI] -.->|Override Settings| Auth
+        M_Geo[🚫 Bypassed in CI] -.->|Mock Request Attrs| Geo
+        M_Feat[📦 Returns Dummy Vectors] -.->|@patch| FeatureService
+        M_Model[💾 Returns Fake Probabilities] -.->|@patch / sys.modules| Model
+    end
+
+    %% Return Data Flow
+    Model -->|8. Raw Score Details| View
+    View -->|9. JSON Response: BLOCK / APPROVE| Client
+
+    %% Stylings
+    style Client fill:#f9f,stroke:#333,stroke-width:2px
+    style View fill:#bbf,stroke:#333,stroke-width:2px
+    style Model fill:#bfb,stroke:#333,stroke-width:2px
+    style GitHub Actions / Pytest Mock Layer fill:#fff2cc,stroke:#d6b656,stroke-width:1px,stroke-dasharray: 5 5
+
 ```
 
 ## 📄 License
