@@ -67,8 +67,8 @@ graph TD
     subgraph GitHub Actions / Pytest Mock Layer
         M_Auth[🚫 Bypassed in CI] -.->|Override Settings| Auth
         M_Geo[🚫 Bypassed in CI] -.->|Mock Request Attrs| Geo
-        M_Feat[📦 Returns Dummy Vectors] -.->|@patch| FeatureService
-        M_Model[💾 Returns Fake Probabilities] -.->|@patch / sys.modules| Model
+        M_Feat[📦 Returns Dummy Vectors] -.->| @patch| FeatureService
+        M_Model[💾 Returns Fake Probabilities] -.->| @patch / sys.modules| Model
     end
 
     %% Return Data Flow
