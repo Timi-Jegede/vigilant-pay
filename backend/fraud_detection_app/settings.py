@@ -52,13 +52,48 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000'
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:50863',
+    'http://127.0.0.1:50863'
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',   
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT'
+]
+
+CORS_ALLOW_ALL_ORIGINS = True 
+
+
 TRUSTED_PROXY_IPS = ['127.0.0.1', '172.17.0.1']
 
 BACKLISTED_IPS = ['192.168.1.50', '203.0.113.5']
 
+PLOTLY_DASH = {
+    'serve_locally': True,
+}
+
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'system_admin',
     'api_gateway',
     'b2b_portal',
@@ -74,15 +109,18 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_plotly_dash.middleware.BaseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'fraud_detection_engine.middleware.FraudDataEnrichmentMiddleware',
-    'fraud_detection_engine.middleware.ClientPlatformAuthenticationMiddleware',
+    # 'fraud_detection_engine.middleware.FraudDataEnrichmentMiddleware',
+    # 'fraud_detection_engine.middleware.ClientPlatformAuthenticationMiddleware',
+    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
 ]
 
 ROOT_URLCONF = 'fraud_detection_app.urls'
