@@ -3,7 +3,7 @@
 >   The application uses MVC architecture because velocity was important for the development. MVC
     increased the development speed, ease of test and deployment.
 
-[![Build Status](https://img.shields.io)](https://github.com)
+![Success Badge](https://github.com/Timi-Jegede/vigilant-pay/actions/workflows/ci.yml/badge.svg)
 [![Python Version](https://img.shields.io/badge/Python-3.13+-3776AB?logo=python)](https://python.org)
 [![Django Version](https://img.shields.io/badge/Django-5.2+-092e20?logo=django&logoColor=white)](https://djangoproject.com)
 
