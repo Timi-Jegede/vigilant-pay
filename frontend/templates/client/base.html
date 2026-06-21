@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'tailwindcss/dist/output.css' %}" rel="stylesheet">
+    <title>{% block section_name %}{% endblock section_name %}</title>
+</head>
+<body class="font-istok">
+    <header class="bg-white border-b-2 border-client-light-clean-gray py-5">
+        <div class="px-14 flex items-center justify-between">
+            <div class="w-56 font-instrument font-bold text-2.66xl text-left text-admin-teal cursor-pointer">
+                <h1>Vigilant Pay</h1>
+            </div>
+            <div class="flex items-center space-x-20">
+                <div class="pl-20 flex items-center space-x-12">
+                    <div class="text-base text-client-dark-deep-blue flex items-center space-x-4">
+                        <label for="">Range:</label>
+                        <select name="" id="" class="text-base border-0 ring-0 outline-none cursor-pointer">
+                            <option value="last-30-days">Last 30 days</option>
+                            <option value="last-1-hour">Last 1 hour</option>
+                            <option value="last-30-minutes">Last 30 minutes</option>
+                        </select>
+                    </div>
+                    <div class="text-lg text-client-dark-deep-blue">
+                        <span>App | NeoBank</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-admin-teal text-2xl">
+                        <h2>Client Portal</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-admin-off-white px-10 pt-10">
+        {% block section %}
+
+        {% endblock section %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,162 @@
+{% extends '../base.html' %}
+
+{% block section_name %} Fraud ROI Metrics {% endblock section_name %}
+
+
+{% block section %}
+
+{% load plotly_dash %}
+
+{% plotly_header %}
+
+<div class="space-y-8 pb-10">
+    <div class="grid grid-cols-4 gap-4 font-istok">
+        <div class="col-span-2 bg-white">
+            <div class="px-6 py-8">
+                <div class="text-lg border-b-2 border-client-bright-vivid-blue pb-2">
+                    <h2>Financial Impact and Fraud ROI</h2>
+                </div>
+                <div class="text-base mt-4">
+                    <h4>Fraud ROI Metrics</h4>
+                </div>
+                <section class="flex items-center bg-client-bright-vivid-blue font-golos text-sm
+                        grid grid-cols-3 text-white mt-4">
+                    <div class="px-5 py-5 border-r-2 border-client-vibrant-medium-blue col-span-1
+                    space-y-2">
+                        <p class="font-golos font-semibold">$142,500.00</p>
+                        <p>Saved Revenue</p>
+                    </div>
+                    <div class="px-5 py-5 border-r-2 border-client-vibrant-medium-blue col-span-1
+                    space-y-2">
+                        <p class="font-golos font-semibold">$12,400.00</p>
+                        <p>Chargebacks</p>
+                    </div>
+                    <div class="px-5 py-5 border-r-2 border-client-vibrant-medium-blue col-span-1
+                    space-y-2">
+                        <p class="font-golos font-semibold">91.3%</p>
+                        <p>Engine ROI</p>
+                    </div>
+                </section>
+                <section class="mt-2">
+
+                    <div>
+                        {% plotly_app name="true_chargebacks" ratio=0.8 %}
+                    </div>
+                
+                </section>
+            </div>
+        </div>
+        <div class="col-span-2 bg-white">
+            <div class="px-6 py-8">
+                <div class="text-lg border-b-2 border-client-bright-vivid-blue pb-2">
+                    <h2>False Positive Tracking</h2>
+                </div>
+                <section class="flex items-center bg-client-bright-vivid-blue font-golos text-sm
+                        grid grid-cols-2 text-white mt-4">
+                    <div class="px-5 py-5 border-r-2 border-client-vibrant-medium-blue col-span-1
+                    space-y-2">
+                        <p class="font-golos font-semibold">0.42%</p>
+                        <p>False Positive Rate</p>
+                    </div>
+                    <div class="px-5 py-5 border-r-2 border-client-vibrant-medium-blue col-span-1
+                    space-y-2">
+                        <p class="font-golos font-semibold">112</p>
+                        <p>Good Users Blocked</p>
+                    </div>
+                </section>
+                <section>                
+                        
+                    <div>
+                        {% plotly_app name="disputed_declines" ratio=0.8 %}
+                    </div>
+                    
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="font-istok bg-white">
+        <div class="px-6 py-8">
+            <div class="text-lg border-b-2 border-client-bright-vivid-blue pb-2">
+                <h2>User Conversion Impact</h2>
+            </div>
+            <div class="text-base mt-4">
+                <h4>Funnel Conversion Impact (Friction Analysis)</h4>
+            </div>
+            <section class="mt-4 ml-16">
+                <div class="flex items-center justify-start text-base space-x-10">
+                    <div class="flex flex-col justify-center items-center space-y-1">
+                        <p class="flex items-center space-x-2">
+                            <svg class="fill-current text-yellow-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236.764 236.764">
+                                <path d="M110.035,151.039c0.399,3.858,3.655,6.73,7.451,6.73c0.258,0,0.518-0.013,0.78-0.04c4.12-0.426,7.115-4.111,6.689-8.231 l-3.458-33.468c-0.426-4.121-4.11-7.114-8.231-6.689c-4.12,0.426-7.115,4.111-6.689,8.231L110.035,151.039z"></path>
+                                <path d="M156.971,157.729c0.262,0.027,0.522,0.04,0.78,0.04c3.795,0,7.052-2.872,7.451-6.73l3.458-33.468 c0.426-4.121-2.569-7.806-6.689-8.231c-4.121-0.419-7.806,2.569-8.231,6.689l-3.458,33.468 C149.855,153.618,152.85,157.303,156.971,157.729z"></path>
+                                <path d="M98.898,190.329c-12.801,0-23.215,10.414-23.215,23.215c0,12.804,10.414,23.221,23.215,23.221 c12.801,0,23.216-10.417,23.216-23.221C122.114,200.743,111.699,190.329,98.898,190.329z M98.898,221.764 c-4.53,0-8.215-3.688-8.215-8.221c0-4.53,3.685-8.215,8.215-8.215c4.53,0,8.216,3.685,8.216,8.215 C107.114,218.076,103.428,221.764,98.898,221.764z"></path>
+                                <path d="M176.339,190.329c-12.801,0-23.216,10.414-23.216,23.215c0,12.804,10.415,23.221,23.216,23.221 c12.802,0,23.218-10.417,23.218-23.221C199.557,200.743,189.141,190.329,176.339,190.329z M176.339,221.764 c-4.53,0-8.216-3.688-8.216-8.221c0-4.53,3.686-8.215,8.216-8.215c4.531,0,8.218,3.685,8.218,8.215 C184.557,218.076,180.87,221.764,176.339,221.764z"></path>
+                                <path d="M221.201,84.322c-1.42-1.837-3.611-2.913-5.933-2.913H65.773l-6.277-24.141c-0.86-3.305-3.844-5.612-7.259-5.612h-30.74 c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h24.941l6.221,23.922c0.034,0.15,0.073,0.299,0.116,0.446l23.15,89.022 c0.86,3.305,3.844,5.612,7.259,5.612h108.874c3.415,0,6.399-2.307,7.259-5.612l23.211-89.25 C223.111,88.55,222.621,86.158,221.201,84.322z M186.258,170.659H88.982l-19.309-74.25h135.894L186.258,170.659z"></path>
+                                <path d="M106.603,39.269l43.925,0.002L139.06,50.74c-2.929,2.929-2.929,7.678,0,10.606c1.464,1.464,3.384,2.197,5.303,2.197 c1.919,0,3.839-0.732,5.303-2.197l24.263-24.263c2.929-2.929,2.929-7.678,0-10.606l-24.28-24.28c-2.929-2.929-7.678-2.929-10.607,0 c-2.929,2.929-2.929,7.678,0,10.607l11.468,11.468l-43.907-0.002h0c-4.142,0-7.5,3.358-7.5,7.5 C99.104,35.911,102.461,39.269,106.603,39.269z"></path>
+                            </svg>
+                            <span>Checkout Initiated</span>
+                        </p>
+                        <p>10,000 Users</p>
+                        <p>(100% Base)</p>
+                    </div>
+                    <div>
+                        <svg class="stroke-current text-client-bright-vivid-blue w-10" viewBox="0 0 24 24" id="right-arrow" xmlns="http://www.w3.org/2000/svg">
+                            <path id="primary" d="M3,12H21m-3,3,3-3L18,9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg> 
+                    </div>
+                    <div class="flex flex-col justify-center items-center space-y-1">
+                        <p class="flex items-center space-x-2">
+                            <svg class="fill-current text-blue-400 w-4" viewBox="0 0 24 24">
+                                <path d="M17 12C17 12.6566 16.8707 13.3068 16.6194 13.9134C16.3681 14.52 15.9998 15.0712 15.5355 15.5355C15.0712 15.9998 14.52 16.3681 13.9134 16.6194C13.3068 16.8707 12.6566 17 12 17C11.3434 17 10.6932 16.8707 10.0866 16.6194C9.47995 16.3681 8.92876 15.9998 8.46447 15.5355C8.00017 15.0712 7.63188 14.52 7.3806 13.9134C7.12933 13.3068 7 12.6566 7 12C7 11.3434 7.12933 10.6932 7.3806 10.0866C7.63188 9.47995 8.00017 8.92876 8.46447 8.46447C8.92876 8.00017 9.47996 7.63188 10.0866 7.3806C10.6932 7.12933 11.3434 7 12 7C12.6566 7 13.3068 7.12933 13.9134 7.3806C14.52 7.63188 15.0712 8.00017 15.5355 8.46447C15.9998 8.92876 16.3681 9.47996 16.6194 10.0866C16.8707 10.6932 17 11.3434 17 12L17 12Z" stroke="#1C274C" stroke-width="1.5"></path>
+                                <path d="M13.8478 13.9134C13.9483 13.3068 14 12.6566 14 12C14 11.3434 13.9483 10.6932 13.8478 10.0866C13.7472 9.47996 13.5999 8.92876 13.4142 8.46447C13.2285 8.00017 13.008 7.63188 12.7654 7.3806C12.5227 7.12933 12.2626 7 12 7C11.7374 7 11.4773 7.12933 11.2346 7.3806C10.992 7.63188 10.7715 8.00017 10.5858 8.46447C10.4001 8.92876 10.2528 9.47995 10.1522 10.0866C10.0517 10.6932 10 11.3434 10 12C10 12.6566 10.0517 13.3068 10.1522 13.9134C10.2527 14.52 10.4001 15.0712 10.5858 15.5355C10.7715 15.9998 10.992 16.3681 11.2346 16.6194C11.4773 16.8707 11.7374 17 12 17C12.2626 17 12.5227 16.8707 12.7654 16.6194C13.008 16.3681 13.2285 15.9998 13.4142 15.5355C13.5999 15.0712 13.7472 14.52 13.8478 13.9134Z" stroke="#1C274C" stroke-width="1.5"></path>
+                                <path d="M7 12H17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                                <path d="M3 10.4167C3 7.21907 3 5.62028 3.37752 5.08241C3.75503 4.54454 5.25832 4.02996 8.26491 3.00079L8.83772 2.80472C10.405 2.26824 11.1886 2 12 2C12.8114 2 13.595 2.26824 15.1623 2.80472L15.7351 3.00079C18.7417 4.02996 20.245 4.54454 20.6225 5.08241C21 5.62028 21 7.21907 21 10.4167C21 10.8996 21 11.4234 21 11.9914C21 14.4963 20.1632 16.4284 19 17.9041M3.19284 14C4.05026 18.2984 7.57641 20.5129 9.89856 21.5273C10.62 21.8424 10.9807 22 12 22C13.0193 22 13.38 21.8424 14.1014 21.5273C14.6796 21.2747 15.3324 20.9478 16 20.5328" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                            </svg>
+                            <span>FaaS Risk Triage</span>
+                        </p>
+                        <p>9,850 passed</p>
+                        <p>(Auto Approved)</p>
+                    </div>
+                    <div>
+                       <svg class="stroke-current text-client-bright-vivid-blue w-10" viewBox="0 0 24 24" id="right-arrow" xmlns="http://www.w3.org/2000/svg">
+                            <path id="primary" d="M3,12H21m-3,3,3-3L18,9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg> 
+                    </div>
+                    <div class="flex flex-col justify-center items-center space-y-1">
+                        <p class="flex items-center space-x-2">
+                            <svg class="fill-current text-blue-400 w-4" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 6V4C4 1.79086 5.79086 0 8 0C10.2091 0 12 1.79086 12 4V6H14V16H2V6H4ZM6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4V6H6V4ZM7 13V9H9V13H7Z"></path>
+                            </svg>
+                            <span>Step-up MFA</span>
+                        </p>
+                        <p>150 Challenged</p>
+                        <p>(Triggered by Engine)</p>
+                    </div>
+                    <div>
+                       <svg class="stroke-current text-client-bright-vivid-blue w-10" viewBox="0 0 24 24" id="right-arrow" xmlns="http://www.w3.org/2000/svg">
+                            <path id="primary" d="M3,12H21m-3,3,3-3L18,9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg> 
+                    </div>
+                    <div class="flex flex-col justify-center items-center space-y-1">
+                        <p class="flex items-center space-x-2">
+                            <svg class="fill-current text-green-400 w-4" viewBox="0 0 1024 1024">
+                                <path d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"></path>
+                            </svg>
+                            <span>Success</span>
+                        </p>
+                        <p>92 Completed</p>
+                        <p>(58% Dropoff)</p>
+                    </div>
+                </div>
+                <div class="mt-6 text-sm">
+                    <p>Insight: MFA on"crypto transfers" is causing 42% leakage. Consider tuning Rule #104.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% plotly_footer %}
+
+{% endblock section %}

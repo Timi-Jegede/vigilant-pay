@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@source "../../../templates/**/*.html";
+@source "../../../../**/*.py";
+@source "../../js/site-script.js";
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../../fonts/InstrumentSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../../fonts/InstrumentSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../../fonts/InstrumentSans-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../../fonts/InstrumentSans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Instrument Sans';
+    src: url('../../fonts/InstrumentSans-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../../fonts/istok-web-v26-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../../fonts/istok-web-v26-latin-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../../fonts/istok-web-v26-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Golos Text';
+    src: url('../../fonts/Golos-Text-Regular.woff2') format('woff2'),
+             url('../../fonts/Golos-Text-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Golos Text';
+    src: url('../../fonts/Golos-Text-Medium.woff2') format('woff2'),
+             url('../../fonts/Golos-Text-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Golos Text';
+    src: url('../../fonts/Golos-Text-DemiBold.woff2') format('woff2'),
+             url('../../fonts/Golos-Text-DemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Golos Text';
+    src: url('../../fonts/Golos-Text-Bold.woff2') format('woff2'),
+             url('../../fonts/Golos-Text-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@source inline("h-36 overflow-y-hidden");
+@theme {
+    --color-admin-soft-gray: #E4E7EC;
+    --color-admin-teal: #5BC0BE;
+    --color-admin-off-white: #F8F9FA;
+    --color-admin-neutral-gray: #D0D5DD;
+    --color-admin-pale-gray: #F0F2F5;
+    --color-admin-deep-navy-blue: #2C3D6F;
+    --color-admin-royal-navy-blue: #0B132B;
+    --color-admin-ultra-dark-navy-blue: #1C2541;
+    --color-admin-ultra-light-neutral-gray: #F4F5F6;
+    --color-admin-corporate-navy-blue: #24325C;
+    --color-admin-midnight-navy-blue: #131B35;
+    --color-admin-intense-red: #EF4444;
+    --color-admin-emerald-green: #10B981;
+    --color-admin-deep-emerald-green: #059669;
+    --color-admin-darker-red: #DC2626;
+    --color-admin-muted-denim-blue: #3A4B7C;
+    --color-admin-muted-slate-gray: #8A99AD;
+    --color-client-dark-deep-blue: #0F172A;
+    --color-client-light-clean-gray: #E2E8F0;
+    --color-client-bright-vivid-blue: #2563EB;
+    --color-client-vibrant-medium-blue: #3B82F6;
+
+    --font-instrument: "Instrument Sans", sans-serif;
+    --font-istok: "Istok Web", sans-serif;
+    --font-golos: "Golos Text", sans-serif;
+    --text-1.5xl: 1.375rem;
+    --text-2.66xl: 1.75rem;
+    --spacing-7.5: 1.875rem;
+    --spacing-108: 27rem;
+}

@@ -1,0 +1,161 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block section_name %} Alert Queue and Management {% endblock section_name %}
+
+{% block section %}
+
+            <div class="grid grid-cols-12 gap-3 mt-5 text-admin-off-white flex-1">
+                <div class="col-span-3 bg-admin-corporate-navy-blue rounded-lg overflow-y-auto py-2
+                flex flex-col">
+                    <div class="space-y-2 px-4">
+                        <div class="text-base">
+                            <h3>Inbox Queue</h3>
+                        </div>
+                        <div class="flex items-center justify-left text-sm space-x-2">
+                            <span class="inline-block h-6 pb-1">Filters:</span>
+                            <span class="inline-block h-6 pb-1 cursor-pointer hover:border-b hover:border-admin-off-white">All</span>
+                            <span class="inline-block h-6">|</span>
+                            <span class="inline-block h-6 pb-1 cursor-pointer hover:border-b hover:border-admin-off-white">High</span>
+                            <span class="inline-block h-6">|</span>
+                            <span class="inline-block h-6 pb-1 cursor-pointer hover:border-b hover:border-admin-off-white">Unassigned</span>
+                        </div>
+                    </div>
+                    <div id="live-alerts-container" class="overflow-y-auto flex-1 h-full space-y-2 mt-2 text-sm">
+
+                    </div>
+                </div>
+                <div class="col-span-6 bg-admin-corporate-navy-blue h-full rounded-lg py-2
+                flex flex-col">
+                    <div class="space-y-2 px-4">    
+                        <div class="text-base">
+                            <h3>Data and Timeline</h3>
+                        </div>
+                        <div class="flex flex-col justify-center space-y-2 text-sm">
+                            <div>
+                                <span>User Profile: Jane Doe (ID: #892)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2 w-1/2">
+                                    <div><span>KYC Status: </span></div>
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="fill-current w-4 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.811 122.88">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M55.713,0c20.848,13.215,39.682,19.467,55.846,17.989 c2.823,57.098-18.263,90.818-55.63,104.891C19.844,109.708-1.5,77.439,0.083,17.123C19.058,18.116,37.674,14.014,55.713,0L55.713,0 z M33.784,66.775c-1.18-1.01-1.318-2.786-0.309-3.967c1.011-1.181,2.787-1.318,3.967-0.309l11.494,9.875l25.18-27.684 c1.047-1.15,2.828-1.234,3.979-0.188c1.149,1.046,1.233,2.827,0.187,3.978L51.262,78.188l-0.002-0.002 c-1.02,1.121-2.751,1.236-3.91,0.244L33.784,66.775L33.784,66.775z"/>
+                                        </svg>
+                                        <span>Verified</span>
+                                    </div>
+                                </div>
+                                <div class="w-1/2">
+                                    <span>Age: 420d</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 h-full space-y-2 text-sm mt-2">
+                        <div class="bg-admin-midnight-navy-blue border border-admin-muted-denim-blue
+                        px-4 py-2 space-y-1 h-44 flex flex-col">
+                            <div>
+                                <h4>Behavioral Signals</h4>
+                            </div>
+                            <div class="flex-1">
+                                <ul id="behavior-signals-container" class="h-32 space-y-1 overflow-y-auto">
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div  class="bg-admin-midnight-navy-blue border border-admin-muted-denim-blue
+                        px-4 py-2 space-y-1 h-44 flex flex-col">
+                            <div>
+                                <h4>Transaction History Timeline</h4>
+                            </div>
+                            <div class="flex-1">
+                                <ul id="transaction-history-container" class="h-32 space-y-1 overflow-y-auto">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-3 bg-admin-corporate-navy-blue h-full rounded-lg flex flex-col py-2">
+                    <div class="space-y-2 px-4">
+                        <div class="text-base ">
+                            <h4>Investigation and Assignment</h4>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div>
+                                <span>Case Assigment Toolbar</span>
+                            </div>
+                            <div>
+                                <span>Owner: Me (Alex M)</span>
+                            </div>
+                            <div>
+                                <span>Queue: Tier 2 Escalation</span>
+                            </div>
+                        </div>
+                        <div class="text-sm mt-4">
+                            <div>
+                                <label class="text-admin-off-white">Action Notes:</label>
+                                <input type="text" name="" id="" placeholder="Write reason for decision" class="bg-admin-base-off-white rounded
+                                outline-none ring-0 pl-2 w-full mt-1">
+                            </div>
+                            <div class="flex items-center justify-end mt-1">
+                                <button type="button" class="bg-admin-midnight-navy-blue
+                                text-admin-off-white px-2 py-1 cursor-pointer hover:bg-admin-deep-navy-blue">
+                                    Add Note
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 h-full space-y-2 text-sm mt-2">
+                        <div class="bg-admin-midnight-navy-blue border border-admin-muted-denim-blue
+                        px-4 py-2 space-y-2 h-20 overflow-y-auto">
+                            <div>
+                                <h4>Decision</h4>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="w-1/2">
+                                    <button type="submit" class="bg-admin-emerald-green 
+                                    hover:bg-admin-deep-emerald-green px-4 py-1 cursor-pointer
+                                    text-admin-off-white rounded">
+                                        Approve
+                                    </button>
+                                </div>
+                                <div class="w-1/2">
+                                    <button type="submit" class="bg-admin-intense-red 
+                                    hover:bg-admin-darker-red px-4 py-1 cursor-pointer
+                                    text-admin-off-white rounded">
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-admin-midnight-navy-blue border border-admin-muted-denim-blue
+                        px-4 py-2 space-y-1 h-22 overflow-y-auto">
+                            <div>
+                                <h4>Third-Party Enrichment Checks</h4>
+                            </div>
+                            <div>
+                                <ul class="space-y-1">
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="fill-current w-2 text-admin-off-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.88">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M61.438,0c33.93,0,61.441,27.512,61.441,61.441 c0,33.929-27.512,61.438-61.441,61.438C27.512,122.88,0,95.37,0,61.441C0,27.512,27.512,0,61.438,0L61.438,0z"/>
+                                        </svg>
+                                        <span>Email Age: 4.5 years</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="fill-current w-2 text-admin-off-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.88">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M61.438,0c33.93,0,61.441,27.512,61.441,61.441 c0,33.929-27.512,61.438-61.441,61.438C27.512,122.88,0,95.37,0,61.441C0,27.512,27.512,0,61.438,0L61.438,0z"/>
+                                        </svg>
+                                        <span>IP Distance: 3,000 miles (High Risk)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="{% static 'scripts/js/live-alerts.js' %}"></script>
+
+{% endblock section %}
